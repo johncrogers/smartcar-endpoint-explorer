@@ -1,20 +1,39 @@
 import React from "react";
 
 import { RequestForm, RequestFormProps } from "./RequestForm";
-import { ResponseDisplay, ResponseDisplayProps } from "./ResponseDisplay";
+import { ResponseDisplay } from "./ResponseDisplay";
+import { useEndpointExplorer } from "./useEndpointExplorer";
 
-type EndpointExplorerProps = RequestFormProps & ResponseDisplayProps;
+type EndpointExplorerProps = Pick<RequestFormProps, "endpointConfiguration">;
 
 export const EndpointExplorer: React.FC<EndpointExplorerProps> = (
   props: EndpointExplorerProps
 ) => {
-  const {
-    endpointConfiguration,
-    response,
-    onChangeBaseUrl,
-    onChangeRequestBodyProperty,
-    onSubmitRequest,
-  } = props;
+  const { endpointConfiguration } = props;
+  const [{ request, response, loading, error }, { executeRequest }] =
+    useEndpointExplorer(endpointConfiguration);
+  const onChangeBaseUrl: RequestFormProps["onChangeBaseUrl"] = () => {
+    // set url
+  };
+  const onChangeRequestBodyProperty: RequestFormProps["onChangeRequestBodyProperty"] =
+    () => {
+      // set values
+    };
+  const onSubmitRequest: RequestFormProps["onSubmitRequest"] = (event) => {
+    // collect values
+    const url = "";
+    const method = "";
+    const body = {};
+
+    console.log(event);
+
+    // submit request
+    executeRequest({
+      url,
+      method,
+      body,
+    });
+  };
 
   return (
     <>

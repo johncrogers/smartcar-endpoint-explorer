@@ -31,6 +31,7 @@ export const example = {
     },
   ],
 };
+const email = "john.clinton.rogers@gmail.com";
 
 const selctors = {
   base: "RequestForm",
@@ -39,6 +40,8 @@ const selctors = {
   url: "RequestForm__url",
   body: "RequestForm__body",
   bodyField: "RequestForm__bodyField",
+  resetButton: "RequestForm__resetButton",
+  submitButton: "RequestForm__submitButton",
 };
 
 describe(`EndpointExplorer`, () => {
@@ -86,132 +89,22 @@ describe(`EndpointExplorer`, () => {
     });
   });
 
-  describe(`Validation`, () => {
-    it(`Requires valid emails`, () => {
-      cy.log("Load page");
-      loadPage();
-
-      cy.log("Enter invalid value");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect validation to display correctly");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the correct validation message to appear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the submission button to be disabled");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect validation to display correctly");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the correct validation message to appear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the submission button to be disabled");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Enter a valid value");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect validation to disappear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the correct validation message to appear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the submission button to be enabled");
-      cy.contains("break", { timeout: 0 });
-    });
-
-    it(`Requires valid full names`, () => {
-      cy.log("Load page");
-      loadPage();
-
-      cy.log("Enter invalid value");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect validation to display correctly");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the correct validation message to appear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the submission button to be disabled");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect validation to display correctly");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the correct validation message to appear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the submission button to be disabled");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Enter a valid value");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect validation to disappear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the correct validation message to appear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the submission button to be enabled");
-      cy.contains("break", { timeout: 0 });
-    });
-
-    it(`Requires valid phone numbers`, () => {
-      cy.log("Load page");
-      loadPage();
-
-      cy.log("Enter invalid value");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect validation to display correctly");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the correct validation message to appear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the submission button to be disabled");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect validation to display correctly");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the correct validation message to appear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the submission button to be disabled");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Enter a valid value");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect validation to disappear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the correct validation message to appear");
-      cy.contains("break", { timeout: 0 });
-
-      cy.log("Expect the submission button to be enabled");
-      cy.contains("break", { timeout: 0 });
-    });
-  });
-
   describe(`Submission`, () => {
-    it(`Can reset the form`, () => {
+    it.only(`Can reset the form`, () => {
       cy.log("Load page");
       loadPage();
+
+      cy.log("Expect the default value to be empty");
+      select(`${selctors.bodyField} email`).should("have.value", "");
 
       cy.log("Complete form");
-      cy.contains("break", { timeout: 0 });
+      enterEmail(email);
+
+      cy.log("Expect the value to have updated");
+      select(`${selctors.bodyField} email`).should("have.value", email);
 
       cy.log("Click to reset the form");
-      cy.contains("break", { timeout: 0 });
+      resetForm();
 
       cy.log("Expect each body field to display correctly");
       cy.contains("break", { timeout: 0 });
@@ -261,3 +154,13 @@ describe(`EndpointExplorer`, () => {
     });
   });
 });
+
+function enterEmail(email: string) {
+  select(`${selctors.bodyField} email`).type(email);
+}
+function resetForm() {
+  select(selctors.resetButton).click();
+}
+function submitForm(email: string) {
+  select(selctors.submitButton).click();
+}

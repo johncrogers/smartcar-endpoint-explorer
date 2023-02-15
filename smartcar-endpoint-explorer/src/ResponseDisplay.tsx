@@ -1,7 +1,7 @@
 import React from "react";
 
 export type ResponseDisplayProps = {
-  response: string;
+  response: string | null;
 };
 
 export const ResponseDisplay: React.FC<ResponseDisplayProps> = (

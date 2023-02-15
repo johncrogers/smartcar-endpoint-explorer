@@ -19,6 +19,8 @@ const selctors = {
   url: "RequestForm__url",
   body: "RequestForm__body",
   bodyField: "RequestForm__bodyField",
+  resetButton: "RequestForm__resetButton",
+  submitButton: "RequestForm__submitButton",
 };
 
 export const RequestForm: React.FC<RequestFormProps> = (
@@ -40,7 +42,6 @@ export const RequestForm: React.FC<RequestFormProps> = (
       </div>
       <div data-cy={selctors.url}>
         <div>Base URL:</div>
-        <div>{url}</div>
         <input
           type="text"
           placeholder="Base Url"
@@ -52,7 +53,10 @@ export const RequestForm: React.FC<RequestFormProps> = (
         <div>Body:</div>
         {body.map((fieldConfiguration) => {
           return (
-            <div data-cy={selctors.bodyField} key={fieldConfiguration.name}>
+            <div
+              data-cy={`${selctors.bodyField} ${fieldConfiguration.name}`}
+              key={fieldConfiguration.name}
+            >
               <div>{fieldConfiguration.name}:</div>
               <div>
                 <input
@@ -71,7 +75,12 @@ export const RequestForm: React.FC<RequestFormProps> = (
           );
         })}
       </div>
-      <button type="submit">Submit</button>
+      <div>
+        <input type="reset" data-cy={selctors.resetButton} />
+        <button type="submit" data-cy={selctors.submitButton}>
+          Submit
+        </button>
+      </div>
     </form>
   );
 };

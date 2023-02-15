@@ -32,19 +32,7 @@ const response = "Response";
 function App() {
   return (
     <div className="App">
-      <EndpointExplorer
-        endpointConfiguration={example}
-        onChangeBaseUrl={() => {
-          //
-        }}
-        onChangeRequestBodyProperty={() => {
-          //
-        }}
-        onSubmitRequest={() => {
-          //
-        }}
-        response={response}
-      />
+      <EndpointExplorer endpointConfiguration={example} />
     </div>
   );
 }

@@ -126,12 +126,11 @@ Smartcar Challenege:
                         phone
                     submit
                 ✔ Response @done(23-02-15 15:02)
-            ☐ Implement model
+            ✔ Implement model @done(23-02-15 16:51)
                 request
                     url
                     method
                     body
-                validation
                 submission
             ☐ Implement controller
                 FormPage

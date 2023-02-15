@@ -111,19 +111,12 @@ Smartcar Challenege:
                 ]
             }
     Phases:
-        ☐ Initialize repo
-        ☐ Initialize e2e
-        ☐ Implement initial spec
+        ✔ Initialize repo @done(23-02-15 13:09)
+        ✔ Initialize e2e @done(23-02-15 13:09)
+        ✔ Implement initial spec @done(23-02-15 13:09)
         ☐ Implement MVP
-            ☐ Implement model
-                request
-                    url
-                    method
-                    body
-                validation
-                submission
-            ☐ Implement view
-                Form
+            ✔ Implement view @done(23-02-15 15:02)
+                ✔ Form @done(23-02-15 15:00)
                     title
                     method
                     url
@@ -132,7 +125,14 @@ Smartcar Challenege:
                         name
                         phone
                     submit
-                    response
+                ✔ Response @done(23-02-15 15:02)
+            ☐ Implement model
+                request
+                    url
+                    method
+                    body
+                validation
+                submission
             ☐ Implement controller
                 FormPage
                     list

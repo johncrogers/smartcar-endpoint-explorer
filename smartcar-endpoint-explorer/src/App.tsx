@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import "./App.css";
+import { EndpointConfiguration } from "./EndpointConfiguration";
+import { EndpointExplorer } from "./EndpointExplorer";
+
+export const example: EndpointConfiguration = {
+  title: "Create new user",
+  url: "https://jsonplaceholder.typicode.com/users/",
+  method: "POST",
+  body: [
+    {
+      name: "email",
+      type: "email",
+      max: 24,
+      min: 3,
+    },
+    {
+      name: "full-name",
+      type: "text",
+      placeholder: "John Doe",
+      required: true,
+    },
+    {
+      name: "phone",
+      type: "tel",
+    },
+  ],
+};
+const response = "Response";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EndpointExplorer
+        endpointConfiguration={example}
+        onChangeBaseUrl={() => {
+          //
+        }}
+        onChangeRequestBodyProperty={() => {
+          //
+        }}
+        onSubmitRequest={() => {
+          //
+        }}
+        response={response}
+      />
     </div>
   );
 }

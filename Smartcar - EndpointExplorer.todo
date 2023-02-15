@@ -1,0 +1,121 @@
+describe `EndpointExplorer`:
+    describe `Display`:
+        it `Displays GET endpoint configurations correctly`:
+            ☐ Load page
+            ☐ Expect the endpoint explorer to display the configuration correctly
+            ☐ Expect the title to display correctly
+            ☐ Expect the url to display correctly
+            ☐ Expect the method to display correctly
+            ☐ Expect each body field to display correctly
+            ☐ Expect the email to display correctly
+            ☐ Expect the full name to display correctly
+            ☐ Expect the phone to display correctly
+        it `Displays PUT endpoint configurations correctly`:
+            ☐ Load page
+            ☐ Expect the endpoint explorer to display the configuration correctly
+            ☐ Expect the title to display correctly
+            ☐ Expect the url to display correctly
+            ☐ Expect the method to display correctly
+            ☐ Expect each body field to display correctly
+            ☐ Expect the email to display correctly
+            ☐ Expect the full name to display correctly
+            ☐ Expect the phone to display correctly
+        it `Displays DELETE endpoint configurations correctly`:
+            ☐ Load page
+            ☐ Expect the endpoint explorer to display the configuration correctly
+            ☐ Expect the title to display correctly
+            ☐ Expect the url to display correctly
+            ☐ Expect the method to display correctly
+            ☐ Expect each body field to display correctly
+            ☐ Expect the email to display correctly
+            ☐ Expect the full name to display correctly
+            ☐ Expect the phone to display correctly
+        it `Displays POST endpoint configurations correctly`:
+            ☐ Load page
+            ☐ Expect the endpoint explorer to display the configuration correctly
+            ☐ Expect the title to display correctly
+            ☐ Expect the url to display correctly
+            ☐ Expect the method to display correctly
+            ☐ Expect each body field to display correctly
+            ☐ Expect the email to display correctly
+            ☐ Expect the full name to display correctly
+            ☐ Expect the phone to display correctly
+    describe `Validation`:
+        it `Requires valid emails`:
+            ☐ Load page
+            ☐ Enter invalid value
+            ☐ Expect validation to display correctly
+            ☐ Expect the correct validation message to appear
+            ☐ Expect the submission button to be disabled
+            ☐ Expect validation to display correctly
+            ☐ Expect the correct validation message to appear
+            ☐ Expect the submission button to be disabled
+            ☐ Enter a valid value
+            ☐ Expect validation to disappear
+            ☐ Expect the correct validation message to appear
+            ☐ Expect the submission button to be enabled
+        it `Requires valid full names`:
+            ☐ Load page
+            ☐ Enter invalid value
+            ☐ Expect validation to display correctly
+            ☐ Expect the correct validation message to appear
+            ☐ Expect the submission button to be disabled
+            ☐ Expect validation to display correctly
+            ☐ Expect the correct validation message to appear
+            ☐ Expect the submission button to be disabled
+            ☐ Enter a valid value
+            ☐ Expect validation to disappear
+            ☐ Expect the correct validation message to appear
+            ☐ Expect the submission button to be enabled
+        it `Requires valid phone numbers`:
+            ☐ Load page
+            ☐ Enter invalid value
+            ☐ Expect validation to display correctly
+            ☐ Expect the correct validation message to appear
+            ☐ Expect the submission button to be disabled
+            ☐ Expect validation to display correctly
+            ☐ Expect the correct validation message to appear
+            ☐ Expect the submission button to be disabled
+            ☐ Enter a valid value
+            ☐ Expect validation to disappear
+            ☐ Expect the correct validation message to appear
+            ☐ Expect the submission button to be enabled
+    describe `Submission`:
+        it `Can reset the form`:
+            ☐ Load page
+            ☐ Complete form
+            ☐ Click to reset the form
+            ☐ Expect each body field to display correctly
+            ☐ Expect the email to display correctly
+            ☐ Expect the full name to display correctly
+            ☐ Expect the phone to display correctly
+        it `Can submit new GET requests`:
+            ☐ Load page
+            ☐ Complete form
+            ☐ Submit form
+            ☐ Expect the request to be correct
+            ☐ Expect the response to display correctly
+        it `Can submit new PUT requests`:
+            ☐ Load page
+            ☐ Complete form
+            ☐ Submit form
+            ☐ Expect the request to be correct
+            ☐ Expect the response to display correctly
+        it `Can submit new DELETE requests`:
+            ☐ Load page
+            ☐ Complete form
+            ☐ Submit form
+            ☐ Expect the request to be correct
+            ☐ Expect the response to display correctly
+        it `Can submit new POST requests`:
+            ☐ Load page
+            ☐ Complete form
+            ☐ Submit form
+            ☐ Expect the request to be correct
+            ☐ Expect the response to display correctly
+        it `Handles submission errors`:
+            ☐ Load page
+            ☐ Complete form
+            ☐ Submit form and respond with an error
+            ☐ Expect the request to be correct
+            ☐ Expect the message to be correct

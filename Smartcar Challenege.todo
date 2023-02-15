@@ -1,0 +1,148 @@
+Questions
+    Can handle any number of?
+        endpoints
+        methods
+        fields
+    The example gives a narrower set of features than the whole API suggests.
+        path params 
+        query params
+
+Smartcar Challenege:
+    Requirements:
+        ☐ All fields in the configuration above should be displayed to the user.
+            title
+            url
+            method
+            body
+                email
+                full name
+                phone
+        ☐ The user should be able to set request body parameters according to the inputs defined by the body configuration.
+            can edit
+                headers
+                    auth
+                body
+                    email
+                    full name
+                    phone
+                query
+                path
+        ☐ The user should be able to click a Send request button that will send the user's customized request to the url.
+            Loading
+            Display
+                title
+                url
+                method
+                body
+            Validation
+                body
+                    is valid JSON
+                    is valid structure
+            Submission
+                Can submit new requests
+                Handles submission errors
+        ☐ The component should display the server's response after the user clicks the Send request button.
+            Displays responses correctly
+        ☐ The user should be able to reset the API Explorer Component.
+            Can reset form
+    Implementation:
+        Grading Focus:
+            ☐ Does the application meet specifications?
+                5 requirements
+            ☐ Is the code clean, organized, and intelligible?
+                MVC
+            ☐ Is the code written to be modular and extensible?
+                MVC
+            ☐ Is the user experience simple and easy to follow?
+                Clone Swagger UX
+        Breakdown:
+            Model:
+                ☐ useRequestForm
+                    path
+                    query
+                    body
+                    headers
+            View:
+                ☐ RequestForm
+                    Display
+                        title
+                        method
+                        url
+                    Fields
+                        Email
+                        Full Name
+                        Phone
+                        validation
+                    submit button
+                    response
+                        field
+                        loading
+            Controller:
+                ☐ RequestFormPage
+                    useRequestForm
+                    RequestForm
+            Tests:
+                ☐ Cypress as usual
+            Docs:
+                ☐ JSDoc
+    Endpoint Configuration:
+        ☐ Sample
+            {
+                title: 'Create new user',
+                url: 'https://jsonplaceholder.typicode.com/users/',
+                method: 'POST',
+                body: [
+                    {
+                        name: 'email',
+                        type: 'email',
+                        max: 24,
+                        min: 3,
+                    },
+                    {
+                        name: 'full-name',
+                        type: 'text',
+                        placeholder: 'John Doe',
+                        required: true,
+                    },
+                    {
+                        name: 'phone',
+                        type: 'tel',
+                    },
+                ]
+            }
+    Phases:
+        ☐ Initialize repo
+        ☐ Initialize e2e
+        ☐ Implement initial spec
+        ☐ Implement MVP
+            ☐ Implement model
+                request
+                    url
+                    method
+                    body
+                validation
+                submission
+            ☐ Implement view
+                Form
+                    title
+                    method
+                    url
+                    body
+                        email
+                        name
+                        phone
+                    submit
+                    response
+            ☐ Implement controller
+                FormPage
+                    list
+                    form
+            ☐ Implement Validation
+                email
+                name
+                phone
+        ☐ Implement path params
+        ☐ Implement query params
+        ☐ Implement headers
+        ☐ Implement all endpoints
+        ☐ Stylize view

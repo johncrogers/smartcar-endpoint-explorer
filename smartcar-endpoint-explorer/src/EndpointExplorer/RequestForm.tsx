@@ -1,11 +1,17 @@
 import React from "react";
 
+import { Button, Card, CardBody, CardHeader } from "reactstrap";
+
 import { EndpointConfiguration } from "./EndpointConfiguration";
 import { RequestValues } from "./useEndpointExplorer";
 
 export type RequestFormProps = {
   endpointConfiguration: EndpointConfiguration;
   request: RequestValues;
+  response: Record<string, unknown> | null;
+  error: Record<string, unknown> | null;
+  loading: boolean;
+  onClickResetForm: () => void;
   onChangeBaseUrl: React.ChangeEventHandler<HTMLInputElement>;
   onChangeRequestBodyProperty: (
     propertyName: string,
@@ -31,67 +37,101 @@ export const RequestForm: React.FC<RequestFormProps> = (
   const {
     endpointConfiguration,
     request,
+    loading,
+    error,
+    response,
     onChangeBaseUrl,
     onChangeRequestBodyProperty,
+    onClickResetForm,
     onSubmitRequest,
   } = props;
 
   return (
     <form onSubmit={onSubmitRequest} data-cy={selectors.base}>
-      <div data-cy={selectors.title}>{endpointConfiguration.title}</div>
-      <div data-cy={selectors.method}>
-        <div>Method:</div>
-        <div>{endpointConfiguration.method}</div>
-      </div>
-      <div data-cy={selectors.url}>
-        <div>Base URL:</div>
-        <input
-          type="text"
-          placeholder="Base Url"
-          value={endpointConfiguration.url}
-          onChange={onChangeBaseUrl}
-        />
-      </div>
-      {!!endpointConfiguration.body && (
-        <div data-cy={selectors.body}>
-          <div>Body:</div>
-          {endpointConfiguration.body.map((fieldConfiguration) => {
-            return (
-              <div
-                data-cy={`${selectors.bodyField} ${fieldConfiguration.name}`}
-                key={fieldConfiguration.name}
-              >
-                <div>{fieldConfiguration.name}:</div>
-                <div>
-                  <input
-                    {...fieldConfiguration}
-                    value={
-                      (typeof fieldConfiguration.name === "string" &&
-                      request.body
-                        ? request.body[fieldConfiguration.name]
-                        : undefined) as any
-                    }
-                    onChange={(event) => {
-                      if (typeof fieldConfiguration.name === "string") {
-                        onChangeRequestBodyProperty(
-                          fieldConfiguration.name,
-                          event
-                        );
-                      }
-                    }}
-                  />
-                </div>
+      <Card>
+        <CardHeader className="d-flex justify-content-between bg-primary text-white">
+          <h3 className="my-auto" data-cy={selectors.title}>
+            {endpointConfiguration.title}
+          </h3>
+          <div className="d-flex w-50">
+            <h5 className="my-auto mx-2" data-cy={selectors.method}>
+              <strong>{endpointConfiguration.method}</strong>
+            </h5>
+            <div className="w-100 my-auto" data-cy={selectors.url}>
+              <input
+                className="w-100"
+                type="text"
+                placeholder="Base Url"
+                value={request.url}
+                onChange={onChangeBaseUrl}
+              />
+            </div>
+          </div>
+        </CardHeader>
+        <CardBody>
+          {!!endpointConfiguration.body && (
+            <div className="mb-2">
+              <h5 className="mb-0 p-2 bg-secondary text-white text-start border border-bottom-0">
+                <strong>Body:</strong>
+              </h5>
+              <div className="pb-2 bg-light border" data-cy={selectors.body}>
+                {endpointConfiguration.body.map((fieldConfiguration) => {
+                  return (
+                    <div
+                      data-cy={`${selectors.bodyField} ${fieldConfiguration.name}`}
+                      key={fieldConfiguration.name}
+                    >
+                      <label>{fieldConfiguration.name}:</label>
+                      <div>
+                        <input
+                          {...fieldConfiguration}
+                          value={
+                            (typeof fieldConfiguration.name === "string" &&
+                            request.body
+                              ? request.body[fieldConfiguration.name]
+                              : undefined) as any
+                          }
+                          onChange={(event) => {
+                            if (typeof fieldConfiguration.name === "string") {
+                              onChangeRequestBodyProperty(
+                                fieldConfiguration.name,
+                                event
+                              );
+                            }
+                          }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
-      )}
-      <div>
-        <input type="reset" data-cy={selectors.resetButton} />
-        <button type="submit" data-cy={selectors.submitButton}>
-          Submit
-        </button>
-      </div>
+            </div>
+          )}
+          {(response || loading || error) && (
+            <div className="mb-2 border">
+              <div className="bg-secondary text-white text-start px-2 border-bottom-1">
+                <strong>Response:</strong>
+              </div>
+              {loading && <div>Loading...</div>}
+              {error && <div>An error occurred</div>}
+              {response && <div>{JSON.stringify(response)}</div>}
+            </div>
+          )}
+          <div className="d-flex justify-content-end">
+            <Button data-cy={selectors.resetButton} onClick={onClickResetForm}>
+              Reset
+            </Button>
+            <Button
+              type="submit"
+              color="primary"
+              className="mx-2"
+              data-cy={selectors.submitButton}
+            >
+              Submit
+            </Button>
+          </div>
+        </CardBody>
+      </Card>
     </form>
   );
 };

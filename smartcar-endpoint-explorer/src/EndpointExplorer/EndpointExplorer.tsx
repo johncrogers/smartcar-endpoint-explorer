@@ -1,7 +1,6 @@
 import React from "react";
 
 import { RequestForm, RequestFormProps } from "./RequestForm";
-import { ResponseDisplay } from "./ResponseDisplay";
 import { useEndpointExplorer } from "./useEndpointExplorer";
 
 type EndpointExplorerProps = Pick<RequestFormProps, "endpointConfiguration">;
@@ -12,7 +11,7 @@ export const EndpointExplorer: React.FC<EndpointExplorerProps> = (
   const { endpointConfiguration } = props;
   const [
     { request, response, loading, error },
-    { executeRequest, setUrl, setBody },
+    { executeRequest, setUrl, setBody, resetForm },
   ] = useEndpointExplorer(endpointConfiguration);
   const onChangeBaseUrl: RequestFormProps["onChangeBaseUrl"] = (event) => {
     setUrl(event.target.value);
@@ -49,17 +48,23 @@ export const EndpointExplorer: React.FC<EndpointExplorerProps> = (
       },
     });
   };
+  const onClickResetForm = () => {
+    resetForm();
+  };
 
   return (
-    <>
+    <div className="p-2">
       <RequestForm
         endpointConfiguration={endpointConfiguration}
         request={request}
+        response={response}
+        error={error}
+        loading={loading}
         onChangeBaseUrl={onChangeBaseUrl}
         onChangeRequestBodyProperty={onChangeRequestBodyProperty}
         onSubmitRequest={onSubmitRequest}
+        onClickResetForm={onClickResetForm}
       />
-      <ResponseDisplay response={response} loading={loading} error={error} />
-    </>
+    </div>
   );
 };

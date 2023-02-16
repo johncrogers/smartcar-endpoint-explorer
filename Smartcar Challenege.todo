@@ -9,7 +9,7 @@ Questions
 
 Smartcar Challenege:
     Requirements:
-        ☐ All fields in the configuration above should be displayed to the user.
+        ✔ All fields in the configuration above should be displayed to the user. @done(23-02-16 00:39)
             title
             url
             method
@@ -17,7 +17,7 @@ Smartcar Challenege:
                 email
                 full name
                 phone
-        ☐ The user should be able to set request body parameters according to the inputs defined by the body configuration.
+        ✔ The user should be able to set request body parameters according to the inputs defined by the body configuration. @done(23-02-16 00:39)
             can edit
                 headers
                     auth
@@ -27,7 +27,7 @@ Smartcar Challenege:
                     phone
                 query
                 path
-        ☐ The user should be able to click a Send request button that will send the user's customized request to the url.
+        ✔ The user should be able to click a Send request button that will send the user's customized request to the url. @done(23-02-16 00:41)
             Loading
             Display
                 title
@@ -41,9 +41,9 @@ Smartcar Challenege:
             Submission
                 Can submit new requests
                 Handles submission errors
-        ☐ The component should display the server's response after the user clicks the Send request button.
+        ✔ The component should display the server's response after the user clicks the Send request button. @done(23-02-16 00:41)
             Displays responses correctly
-        ☐ The user should be able to reset the API Explorer Component.
+        ✔ The user should be able to reset the API Explorer Component. @done(23-02-16 00:41)
             Can reset form
     Implementation:
         Grading Focus:
@@ -132,7 +132,7 @@ Smartcar Challenege:
                     method
                     body
                 submission
-            ☐ Implement controller
+            ✔ Implement controller @done(23-02-16 00:41)
                 FormPage
                     list
                     form

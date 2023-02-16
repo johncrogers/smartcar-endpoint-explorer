@@ -2,6 +2,7 @@ import React from "react";
 
 import { Button, Card, CardBody, CardHeader } from "reactstrap";
 
+import { Code } from "./Code";
 import { EndpointConfiguration } from "./EndpointConfiguration";
 import { RequestValues } from "./useEndpointExplorer";
 
@@ -114,7 +115,7 @@ export const RequestForm: React.FC<RequestFormProps> = (
               </div>
               {loading && <div>Loading...</div>}
               {error && <div>An error occurred</div>}
-              {response && <div>{JSON.stringify(response)}</div>}
+              {response && <Code codeString={JSON.stringify(response)} />}
             </div>
           )}
           <div className="d-flex justify-content-end">

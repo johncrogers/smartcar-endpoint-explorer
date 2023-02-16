@@ -41,11 +41,14 @@ export const EndpointExplorer: React.FC<EndpointExplorerProps> = (
     executeRequest({
       url,
       method: endpointConfiguration.method,
-      body: {
-        email,
-        fullName,
-        phone,
-      },
+      body:
+        endpointConfiguration.method !== "GET"
+          ? {
+              email,
+              fullName,
+              phone,
+            }
+          : undefined,
     });
   };
   const onClickResetForm = () => {

@@ -83,7 +83,7 @@ export function useEndpointExplorer(
   const executeRequest: ReturnType<
     typeof useEndpointExplorer
   >[1]["executeRequest"] = useCallback(
-    async (requestValues: RequestValues) => {
+    (requestValues: RequestValues) => {
       setValues({
         request: requestValues,
         loading: true,

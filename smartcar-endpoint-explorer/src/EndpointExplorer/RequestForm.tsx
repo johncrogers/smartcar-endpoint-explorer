@@ -30,6 +30,9 @@ const selectors = {
   bodyField: "RequestForm__bodyField",
   resetButton: "RequestForm__resetButton",
   submitButton: "RequestForm__submitButton",
+  response: "RequestForm__response",
+  loading: "RequestForm__loading",
+  error: "RequestForm__error",
 };
 
 export const RequestForm: React.FC<RequestFormProps> = (
@@ -109,12 +112,12 @@ export const RequestForm: React.FC<RequestFormProps> = (
             </div>
           )}
           {(response || loading || error) && (
-            <div className="mb-2 border">
+            <div className="mb-2 border" data-cy={selectors.response}>
               <div className="bg-secondary text-white text-start px-2 border-bottom-1">
                 <strong>Response:</strong>
               </div>
-              {loading && <div>Loading...</div>}
-              {error && <div>An error occurred</div>}
+              {loading && <div data-cy={selectors.loading}>Loading...</div>}
+              {error && <div data-cy={selectors.error}>An error occurred</div>}
               {response && <Code codeString={JSON.stringify(response)} />}
             </div>
           )}

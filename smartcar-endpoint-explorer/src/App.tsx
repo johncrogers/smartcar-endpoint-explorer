@@ -39,7 +39,10 @@ function App() {
     <div className="App">
       {endpoints.map((endpointConfiguration) => {
         return (
-          <EndpointExplorer endpointConfiguration={endpointConfiguration} />
+          <EndpointExplorer
+            key={endpointConfiguration.url}
+            endpointConfiguration={endpointConfiguration}
+          />
         );
       })}
     </div>

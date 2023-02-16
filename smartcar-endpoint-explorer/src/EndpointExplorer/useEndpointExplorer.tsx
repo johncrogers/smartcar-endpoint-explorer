@@ -92,7 +92,9 @@ export function useEndpointExplorer(
       });
       fetch(requestValues.url, {
         method: requestValues.method,
-        body: JSON.stringify(requestValues.body),
+        body: requestValues.body
+          ? JSON.stringify(requestValues.body)
+          : undefined,
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
